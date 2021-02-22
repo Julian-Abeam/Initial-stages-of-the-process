@@ -21,7 +21,7 @@ class App extends Component{
             <NavigationContainer>
                 <Stack.Navigator>
                 <Stack.Screen name="Home" component={Home}/>
-                <Stack.Screen name="About" component={About} options={{title:"Our Story"}} />
+                <Stack.Screen name="About" component={About} options={{title:"This is going to be rollercoaster"}} />
                 <Stack.Screen name="Contact" component={Contact}/>
           </Stack.Navigator>
         </NavigationContainer>
