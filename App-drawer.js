@@ -12,11 +12,11 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './components/home';
 import About from './components/about';
 import Contact from './components/contact';
+import Signup from './Screens/Signup';
+import LoginScreen from './Screens/LoginScreen';
 
 
-
-
-//import Home from './components/home_with_buttons';
+// import Home from './components/home_with_buttons';
 
 
 
@@ -34,6 +34,9 @@ const Drawer = createDrawerNavigator();
          <Drawer.Screen name="Home" component={Home} />
          <Drawer.Screen name="About" component={About} />
          <Drawer.Screen name="Contact" component={Contact} />
+         <Drawer.Screen name="Signup" component={Signup} />
+          <Drawer.Screen name="LoginScreen" component={LoginScreen} />
+
       </Drawer.Navigator>
      </NavigationContainer>
   );
