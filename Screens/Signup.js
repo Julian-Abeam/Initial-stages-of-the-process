@@ -34,6 +34,7 @@ class Signup extends Component{
     })
     .then((response) => {
       if(response.status === 201){
+          console.log("User Created with ID: ", response);
         return response.json()
       }else if(response.status === 400){
         throw 'Failed validation';
@@ -43,7 +44,12 @@ class Signup extends Component{
     })
     .then(async (responseJson) => {
       console.log("User Created with ID: ", responseJson);
+      this.props.navigation.navigate("Login");
       ToastAndroid.show(error, ToastAndroid.SHORT);
+    })
+    .catch((error) => {
+      console.log(error);
+      ToastAndroid.show("error",ToastAndroid.SHORT);
     })
   }
 
