@@ -1,9 +1,9 @@
  import React, { Component } from 'react';
  import {View, Text, Button, ToastAndroid} from 'react-native';
- import AsyncStorage from '@react-native-async-storage/async-storage';
+ import AsyncStorage from '@react-native-community/async-storage';
 
 
- class HomeScreen extends Component  {
+ class Home extends Component  {
 
 
 
@@ -71,4 +71,4 @@
     }
   }
 
-  export default HomeScreen;
+  export default Home;
