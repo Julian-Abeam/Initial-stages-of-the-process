@@ -16,7 +16,7 @@ import Signup from './Screens/Signup';
 import Login from './Screens/Login';
 import UpdateUser from './Screens/UpdateUser';
 import Locations from './Screens/Locations';
-//import UserData from './Screens/GetUserInfo';
+import UserData from './Screens/GetUserInfo';
 //import CreateReview from './Screens/CreateReview';
 //import ViewLocation from './Screens/ViewLocation';
 //import ViewReview from './Screens/ViewReview';
@@ -42,7 +42,7 @@ const Drawer = createDrawerNavigator();
     <Drawer.Screen name="Login" component={Login} />
     <Drawer.Screen name="UpdateUser" component={UpdateUser} />
     <Drawer.Screen name="Locations" component={Locations} />
-  //  <Drawer.Screen name="UserData" component={UserData} />
+    <Drawer.Screen name="UserData" component={UserData} />
   //  <Drawer.Screen name="ViewLocation" component={ViewLocation} />
   //  <Drawer.Screen name="CreateReview" component={CreateReview} />
   //  <Drawer.Screen name="ViewReview" component={ViewReview} />
