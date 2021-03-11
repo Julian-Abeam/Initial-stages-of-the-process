@@ -3,7 +3,7 @@ import {Button} from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
 import {View, Text, TextInput, Alert, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+// These imports are required to ensure that the code is able to run on the emulator
 class UpdateUser extends Component {
    constructor(props) {
      super(props);
@@ -30,65 +30,83 @@ class UpdateUser extends Component {
      let idParse = await JSON.parse(id);
      let tokenParse = await JSON.parse(token);
 
+  //   async getAsync() {
+  //     let id = await AsyncStorage.getItem('id');
+  //     let token = await AsyncStorage.getItem('token');
+  //     let idParse = await JSON.parse(id);
+  //     let tokenParse = await JSON.parse(token);
+
      this.setState({
        id: idParse,
        token: tokenParse,
      });
    }
 
-   editAccount() {
+   editAccount= async () => {
+
+     const id = await AsyncStorage.getItem('@user_id');
+     console.log(id);
+     const token = await AsyncStorage.getItem('@session_token');
+     console.log(token);
      //Connecting to the server
-     return fetch('http://10.0.2.2:3333/api/v0.0.5/user/' + this.state.id, {
+     return fetch('http://10.0.2.2:3333/api/1.0.0/user/' + id, {
        method: 'PATCH',
-       body: JSON.stringify({
-         given_name: this.state.givenName,
-         family_name: this.state.familyName,
-         email: this.state.email,
-         password: this.state.password,
-       }),
        headers: {
          'Content-Type': 'application/json',
-         'X-Authorization': JSON.parse(this.state.token),
+         'X-Authorization': token,
        },
-     })
+       body: JSON.stringify(this.state),
+       })
         .then(response => {
-          if (response.status !=201) {
-            Alert.alert('Error! Edit failed.');
+          if (response.status !=200) {
+            Alert.alert('Error! Make sure you have been logged in please.');
           } else {
-            this.props.navigation.navigate('Profile');
+            this.props.navigation.navigate('Home');
           }
         })
        .catch(e => {
          console.error(e);
        });
+
+
    }
 
-   //Display components
+
    render() {
+
+
+     /*
+This displays the Firstname, surname, email address, password that the user
+is required to added in the boxes to ensure that everything can be added.
+Through this code the user is able change the details to what they seem fit
+and if there is an issue the go back button allows them to go back to the homepage.
+
+     */
+     const navigation = this.props.navigation;
      return (
        <View style={styles.background}>
-        <Text style={styles.text}>Edit Forename</Text>
+        <Text style={styles.text}>Change the Forename</Text>
         <TextInput
         style={styles.box}
         onChangeText={text => this.setState({givenName: text})}
         value={this.state.givenName}
         accessibilityLabel="Edit Forename"
         />
-        <Text style={styles.text}>Edit Surname</Text>
+        <Text style={styles.text}>Change the Surname</Text>
         <TextInput
            style={styles.box}
            onChangeText={text => this.setState({familyName: text})}
            value={this.state.familyName}
            accessibilityLabel="Edit Surname"
          />
-         <Text style={styles.text}>Edit Email Address</Text>
+         <Text style={styles.text}>Change the Email Address</Text>
          <TextInput
             style={styles.box}
             onChangeText={text => this.setState({email: text})}
             value={this.state.email}
             accessibilityLabel="Edit Email Address"
           />
-          <Text style={styles.text}>Edit Password</Text>
+          <Text style={styles.text}>Change the Password</Text>
           <TextInput
              style={styles.box}
              onChangeText={text => this.setState({password: text})}
@@ -104,25 +122,33 @@ class UpdateUser extends Component {
               buttonStyle={styles.button}
               accessibilityLabel="Edit Profile Photo"
             />
-            <Button
+            <Button // This is a button which ensures that all the changes made has been accepted or cncelled.
                icon={<Icon name="content-save-edit" size={30} color="white" />}
-              on Press={() => this.editAccount()}
+              onPress={() => this.editAccount()}
               buttonStyle={styles.button}
-              title=" Confirm Changes"
+              title=" Confirm all the Changes made" // The button will display those instructions
               accessibilityLabel="Confirm Edit"
             />
+
+            <Button
+               title="Go Back"  // Allows the user to go back to the homepage
+               onPress={() => navigation.goBack()}
+            />
           </View>
+
         </View>
       );
     }
   }
 
   // Stylesheet
+  // This has enabled the layout and colour of the page to be more aesthetically pleasing
+  // The background is lilac and the boxes are white which makes it easier for the user to change their details.
   const styles = StyleSheet.create({
     background: {
       flex: 1,
       flexDirection: 'column',
-      backgroundColor: '#0353a4',
+      backgroundColor: '#92a8d1',
       justifyContent: 'center',
     },
     text: {
@@ -131,7 +157,7 @@ class UpdateUser extends Component {
       marginHorizontal: 30,
     },
     box: {
-      backgroundColor: '#002855',
+      backgroundColor: '#fefbd8',
       marginHorizontal: 10,
       marginVertical: 5,
       width: 200,

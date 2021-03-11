@@ -1,5 +1,5 @@
  import React, { Component } from 'react';
- import {View, Text, Button, ToastAndroid} from 'react-native';
+ import {View, Text, Button, ToastAndroid, StyleSheet} from 'react-native';
  import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -52,6 +52,7 @@
 }
 
     render() {
+      const navigation = this.props.navigation;
       return (
         <View
           style={{
@@ -59,13 +60,21 @@
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundColor: '#92a8d1'
           }}>
-          <Text>Home</Text>
-          <Button
-           title="logout"
-           onPress={() => this.logout()}
-           />
-
+          <Text>Welcome to the Homepage</Text>
+           <Button
+            title="Login"
+            onPress={() => this.props.navigation.navigate("Login")}
+            />
+            <Button
+             title="Signup"
+             onPress={() => this.props.navigation.navigate("Signup")}
+             />
+             <Button
+              title="logout"
+              onPress={() => this.logout()}
+              />
         </View>
       );
     }
