@@ -74,7 +74,7 @@ class Login extends Component {
     render() {
         return (
 
-            
+
            <View>
       <TextInput
       placeholder="Please enter your email"
