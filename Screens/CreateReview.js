@@ -69,6 +69,7 @@ class CreateReview extends Component{
 
 
         return(
+          <View style={styles.background}>
             <View >
               <ScrollView>
                 <View >
@@ -111,14 +112,40 @@ class CreateReview extends Component{
               title="Add Review"
               onPress={() =>  this.addReview()}
               />
+              <Button
+               title="Go Back"
+               onPress={() => this.props.navigation.navigate("UserData")}
+               />
               </View>
               </View>
               </ScrollView>
             </View>
+          </View>
         );
       }
 
 }
 
+//StyleSheet has been implemented
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#92a8d1',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 18,
+    color: '#ffffff',
+    marginHorizontal: 30,
+  },
+  box: {
+    backgroundColor: '#fefbd8',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    width: 200,
+    height: 50,
+  },
+})
 
 export default CreateReview;

@@ -10,6 +10,7 @@ const navigation = this.props.navigation;
   return (
     <View style={styles.container}>
           <Text style={styles.text}>Contact</Text>
+          
             <Button
                title="Go back"
                onPress={() => navigation.goBack()}

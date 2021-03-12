@@ -1,9 +1,12 @@
-
   import React , {Component} from 'react';
   import {Button , ToastAndroid, View} from 'react-native';
   import {ScrollView, TextInput} from 'react-native-gesture-handler';
   import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
+
+// Needed to run the app successfully
 
 
   class Logout extends Component{
@@ -33,20 +36,20 @@
       })
       .then((response) => {
         if(response.status === 200){
-          ToastAndroid.show("Successful logout!",ToastAndroid.SHORT,
+          ToastAndroid.show("Successful has definately been loggedout!",ToastAndroid.SHORT,
           ToastAndroid.CENTER);
           this.props.navigation.navigate("login");
         }
          else if (response.status ===401){
-          ToastAndroid.show("Need to be logged in first!",ToastAndroid.SHORT);
+          ToastAndroid.show("You have to be logged in first!",ToastAndroid.SHORT);
           this.props.navigation.navigate("login");
         }
         else{
-          throw 'Something went wrong';
+          throw 'Something definately went wrong';
         }
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
       })
 
       .catch((error) => {

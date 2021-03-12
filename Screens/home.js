@@ -26,7 +26,7 @@
     })
     .then((response) => {
       if(response.status === 200){
-        ToastAndroid.show("The logout has been Successful!",ToastAndroid.SHORT,
+        ToastAndroid.show("The logout has definately been Successful!",ToastAndroid.SHORT,
         ToastAndroid.CENTER);
         this.props.navigation.navigate("Login");
       }
@@ -35,11 +35,11 @@
         this.props.navigation.navigate("Login");
       }
       else{
-        throw 'Something went wrong';
+        throw 'Something definately went wrong';
       }
     })
     .then(async (responseJson) => {
-      console.log("Logged out now!" , responseJson);
+      console.log("You have Logged out now!" , responseJson);
       AsyncStorage.removeItem('@session_token');
       AsyncStorage.removeItem('@user_id');
       this.props.navigation.navigate("Login");

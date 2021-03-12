@@ -9,7 +9,10 @@ const navigation = this.props.navigation;
 
   return (
     <View style={styles.container}>
-          <Text style={styles.text}>About</Text>
+          <Text style={styles.text}>The Project</Text>
+
+          <Text> This emulator is about to convey how you are able to Login, Sign up,
+          Logout,Show location_id, User updates and many more things  </Text>
             <Button
                title="Go back"
                onPress={() => navigation.goBack()}

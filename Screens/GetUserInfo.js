@@ -103,12 +103,84 @@ getData = async () => {
 
   }
 
+  locFavourite = async (loc_id) => {
+    const value = await AsyncStorage.getItem("@session_token");
+    const id = await AsyncStorage.getItem("@user_id");
+    // console.log(id);
+
+    return fetch("http://10.0.2.2:3333/api/1.0.0/location/"+loc_id+"/favourite", {
+      method: 'post',
+      headers: {
+        'X-Authorization': value
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+
+          //console.log("loc has been made a favourite");
+          //return response.json();
+        }
+        else if (response.status === 401) {
+          throw 'Sorry You Are Unauthorised To View This Information';
+        }
+        else {
+          throw 'There Seems To Be A Problem';
+        }
+      })
+      .then(async () => {
+        console.log("loc favourite");
+
+
+      })
+      .catch((error) => {
+        console.log(error);
+        ToastAndroid.show(error, ToastAndroid.SHORT, ToastAndroid.CENTER);
+      })
+
+}
+
+unFavouriteLocation = async (loc_id) => {
+  const value = await AsyncStorage.getItem("@session_token");
+  const id = await AsyncStorage.getItem("@user_id");
+  // console.log(id);
+
+  return fetch("http://10.0.2.2:3333/api/1.0.0/location/"+loc_id+"/favourite", {
+    method: 'delete',
+    headers: {
+      'X-Authorization': value
+    },
+  })
+    .then((response) => {
+      if (response.status === 200) {
+
+        //console.log("loc favourited");
+        //return response.json();
+      }
+      else if (response.status === 401) {
+        throw 'This information is on Unauthorised!!!';
+      }
+      else {
+        throw 'There Seems to be a BIG issue';
+      }
+    })
+    .then(async () => {
+      console.log("loc unFavouriteLocation");
+
+
+    })
+    .catch((error) => {
+      console.log(error);
+      ToastAndroid.show(error, ToastAndroid.SHORT, ToastAndroid.CENTER);
+    })
+
+}
+
    render() {
 
 // Navigation to instruct where page will go when the button has been pressed
      const navigation = this.props.navigation;
      return (
-
+           <View style={styles.background}>
        <View
          style={{
            flex: 1,
@@ -149,6 +221,14 @@ getData = async () => {
                              title="view the Reviews"
                            onPress={() => this.props.navigation.navigate("ViewReview", { location_id: item.location_id })}
                          />
+                         <Button style={{ padding: 20 }}
+                               title="Favourite Location "
+                               onPress={() => this.locFavourite(item.location_id)}
+                             />
+                             <Button style={{ padding: 20 }}
+                                   title="unFavouriteLocation"
+                                   onPress={() => this.unFavouriteLocation(item.location_id)}
+                                 />
                </View>
              )}
              keyExtractor={(item, index) => item.location_id.toString()}
@@ -161,6 +241,8 @@ getData = async () => {
 
 
        </View>
+
+      </View>
      );
    }
  }
