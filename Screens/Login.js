@@ -73,9 +73,8 @@ class Login extends Component {
 
     render() {
         return (
-
-
            <View>
+           
       <TextInput
       placeholder="Please enter your email"
       onChangeText={(email) => this.setState ({email})}
@@ -91,6 +90,11 @@ class Login extends Component {
       <Button
       title="Login"
       onPress={() =>  this.login()}
+      style={{padding:5, borderWidth:1, margin:10}}
+      />
+      <Button
+         title="Go back"
+          onPress={() => this.props.navigation.navigate("Home")}
       />
       </View>
         );

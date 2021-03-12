@@ -26,7 +26,7 @@ getData = async () => {
     const value = await AsyncStorage.getItem("@session_token");
     const id = await AsyncStorage.getItem("@user_id");
     //console.log(id);
-
+//  return fetch("http://10.0.2.2:3333/api/1.0.0/user/" + id, {
     return fetch("http://10.0.2.2:3333/api/1.0.0/user/" + id, {
       method: 'get',
       headers: {
@@ -67,6 +67,7 @@ getData = async () => {
     const id = await AsyncStorage.getItem("@user_id");
     // console.log(id);
 //   return fetch("http://10.0.2.2:3333/api/1.0.0/find", {
+//AsyncStorage is used to getItem for the session token
     return fetch("http://10.0.2.2:3333/api/1.0.0/find", {
       method: 'get',
       headers: {

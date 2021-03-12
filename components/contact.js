@@ -24,7 +24,7 @@ const navigation = this.props.navigation;
          flex: 1,
          alignItems: 'center',
          justifyContent: 'center',
-         backgroundColor: 'steelblue'
+         backgroundColor: '#92a8d1'
       },
       text: {
         color: 'white',

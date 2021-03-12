@@ -4,13 +4,13 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 
 
-
 class Signup extends Component{
 
 
   constructor(props){
     super(props);
 
+// this.state first_name, last_name, email, password
 
     this.state = {
       first_name: "",
@@ -22,9 +22,9 @@ class Signup extends Component{
 
 
   signup = () => {
-    //Validation Here
+    //Validation takes place here
 
-
+// return fetch("http://10.0.2.2:3333/api/1.0.0/user",
     return fetch("http://10.0.2.2:3333/api/1.0.0/user", {
       method: 'post',
       headers: {
@@ -37,9 +37,9 @@ class Signup extends Component{
           console.log("User Created with ID: ", response);
         return response.json()
       }else if(response.status === 400){
-        throw 'Failed validation';
+        throw 'The validation has failed';
       }else{
-        throw 'Something went wrong';
+        throw 'There seems to be an issue';
       }
     })
     .then(async (responseJson) => {
@@ -49,18 +49,20 @@ class Signup extends Component{
     })
     .catch((error) => {
       console.log(error);
-      ToastAndroid.show("error",ToastAndroid.SHORT);
+      ToastAndroid.show("there seems to be an error",ToastAndroid.SHORT);
     })
   }
 
-
-
+// This section will display a box for the user first name
+// This section will display a box for the user Last name
+// This section will display a box for the user email address
+// This section will display a box for the user password
 
   render(){
     return (
       <ScrollView>
         <TextInput
-          placeholder="Enter your first name..."
+          placeholder="Please enter your first name..."
           onChangeText={(first_name) => this.setState({first_name})}
           value={this.state.first_name}
           style={{padding:5, borderWidth:1, margin:5}}
@@ -70,7 +72,7 @@ class Signup extends Component{
 
 
         <TextInput
-          placeholder="Enter your last name..."
+          placeholder="Please enter your last name..."
           onChangeText={(last_name) => this.setState({last_name})}
           value={this.state.last_name}
           style={{padding:5, borderWidth:1, margin:5}}
@@ -80,7 +82,7 @@ class Signup extends Component{
 
 
         <TextInput
-          placeholder="Enter your email..."
+          placeholder="Please enter your email..."
           onChangeText={(email) => this.setState({email})}
           value={this.state.email}
           style={{padding:5, borderWidth:1, margin:5}}
@@ -90,20 +92,20 @@ class Signup extends Component{
 
 
         <TextInput
-          placeholder="Enter your password..."
+          placeholder="Please enter your password..."
           onChangeText={(password) => this.setState({password})}
           value={this.state.password}
           secureTextEntry
           style={{padding:5, borderWidth:1, margin:5}}
         />
-
-
-
-
-        <Button
-          title="Create an account"
+        <Button // The button allows the user to create the account
+          title="Create your account"
           onPress={() => this.signup()}
         />
+        <Button
+         title="Go Back"
+         onPress={() => this.props.navigation.navigate("Home")}
+         />
       </ScrollView>
     )
   }
