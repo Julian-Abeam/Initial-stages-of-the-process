@@ -50,7 +50,7 @@ class Login extends Component {
 
 
         .then(async(responseJson) => {
-                console.log("Signed in!", responseJson);
+                console.log("You have signed in!", responseJson);
                 await AsyncStorage.setItem('@session_token', responseJson.token);
                //This will result in converting back
                 await AsyncStorage.setItem('@user_id', JSON.stringify(responseJson.id));
@@ -68,7 +68,8 @@ class Login extends Component {
                 ToastAndroid.show("error", ToastAndroid.SHORT);
             })
     }
-
+    // There are 2 buttons which ensure that the user is able to Login
+    // and is able to go back to the Homepage
 
 
     render() {
@@ -76,14 +77,15 @@ class Login extends Component {
           <View style={styles.background}>
 
 
+
       <TextInput
-      placeholder="Please enter your email"
+      placeholder="Please enter your email!"
       onChangeText={(email) => this.setState ({email})}
       value={this.state.email}
       style={{padding:5, borderWidth:1, margin:10}}
       />
       <TextInput
-      placeholder="Please enter your password"
+      placeholder="Please enter your password!"
       onChangeText={(password) => this.setState ({password})}
       value={this.state.password}
       style={{padding:5, borderWidth:1, margin:10}}
@@ -92,6 +94,7 @@ class Login extends Component {
       title="Login"
       onPress={() =>  this.login()}
       style={{padding:5, borderWidth:1, margin:10}}
+      buttonStyle={styles.buttonContainer}
       />
       <Button
          title="Go back"
@@ -116,12 +119,12 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     marginHorizontal: 30,
   },
-  box: {
-    backgroundColor: '#fefbd8',
-    marginHorizontal: 10,
-    marginVertical: 5,
-    width: 200,
-    height: 50,
+  buttonContainer: {
+    alignItems: 'center',
+    flexDirection:'column',
+    marginTop:50,
+    marginBottom: 10,
+    justifyContent: 'center',
   },
 })
 

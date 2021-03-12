@@ -6,7 +6,7 @@
 
 
 
-// Needed to run the app successfully
+// Needed to run the able to run the code
 
 
   class Logout extends Component{

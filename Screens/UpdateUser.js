@@ -126,7 +126,7 @@ and if there is an issue the go back button allows them to go back to the homepa
                icon={<Icon name="content-save-edit" size={30} color="white" />}
               onPress={() => this.editAccount()}
               buttonStyle={styles.button}
-              title=" Confirm all the Changes made" // The button will display those instructions
+              title=" Confirm all the Changes that have been made" // The button will display those instructions
               accessibilityLabel="Confirm Edit"
             />
 

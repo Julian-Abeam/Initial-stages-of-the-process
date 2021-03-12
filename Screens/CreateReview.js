@@ -56,10 +56,10 @@ class CreateReview extends Component{
       }
        else if (response.status ===400){
            //console.log(response); this means that there seems to be an error
-        throw 'The Validation has Failed';
+        throw 'The Validation has Failed'; // Highlights to the user that there is an issue
       }
       else{
-        throw 'There seems to be an issue';
+        throw 'There seems to be an issue'; // Highlights to the user that there is an issue
       }
 
     })
@@ -138,13 +138,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#ffffff',
     marginHorizontal: 30,
-  },
-  box: {
-    backgroundColor: '#fefbd8',
-    marginHorizontal: 10,
-    marginVertical: 5,
-    width: 200,
-    height: 50,
   },
 })
 
