@@ -104,9 +104,11 @@ getData = async () => {
   }
 
    render() {
+
 // Navigation to instruct where page will go when the button has been pressed
      const navigation = this.props.navigation;
      return (
+
        <View
          style={{
            flex: 1,
@@ -133,6 +135,7 @@ getData = async () => {
                    <Text>{item.location_town}</Text>
                     <Text>{item.location_id}</Text>
                    <Text>{item.location_name}</Text>
+                   <Text>Overall Rating: {item.avg_overall_rating}</Text>
                    <Text>Overall Rating: {item.avg_overall_rating}</Text>
                    <Text>Price Rating: {item.avg_price_rating}</Text>
                    <Text>Quality Rating: {item.avg_quality_rating}</Text>
@@ -161,5 +164,28 @@ getData = async () => {
      );
    }
  }
+
+
+
+ const styles = StyleSheet.create({
+   background: {
+     flex: 1,
+     flexDirection: 'column',
+     backgroundColor: '#92a8d1',
+     justifyContent: 'center',
+   },
+   text: {
+     fontSize: 18,
+     color: '#ffffff',
+     marginHorizontal: 30,
+   },
+   box: {
+     backgroundColor: '#fefbd8',
+     marginHorizontal: 10,
+     marginVertical: 5,
+     width: 200,
+     height: 50,
+   },
+ })
 
  export default UserInfo;

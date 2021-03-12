@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ToastAndroid } from 'react-native';
+import { Button, ToastAndroid, View, StyleSheet } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 
@@ -45,7 +45,7 @@ class Signup extends Component{
     .then(async (responseJson) => {
       console.log("User Created with ID: ", responseJson);
       this.props.navigation.navigate("Login");
-      ToastAndroid.show(error, ToastAndroid.SHORT);
+      ToastAndroid.show('Successfully logged in', ToastAndroid.SHORT);
     })
     .catch((error) => {
       console.log(error);
@@ -60,6 +60,8 @@ class Signup extends Component{
 
   render(){
     return (
+      <View style={styles.background}>
+
       <ScrollView>
         <TextInput
           placeholder="Please enter your first name..."
@@ -107,9 +109,34 @@ class Signup extends Component{
          onPress={() => this.props.navigation.navigate("Home")}
          />
       </ScrollView>
+      </View>
     )
   }
 }
+// This is the StyleSheet
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#92a8d1',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 18,
+    color: '#ffffff',
+    marginHorizontal: 30,
+  },
+  box: {
+    backgroundColor: '#fefbd8',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    width: 200,
+    height: 50,
+  },
+})
+
+
+
 
 
 

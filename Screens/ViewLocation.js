@@ -57,7 +57,12 @@ class LocationInfo extends Component {
   }
 
   render() {
-  //let data  = this.state.locationData;
+// let data  = this.state.locationData;
+// item.location_name
+// item.avg_overall_rating
+// item.avg_price_rating
+// item.avg_quality_rating
+// item.avg_clenliness_rating
 
   return (
     <View >

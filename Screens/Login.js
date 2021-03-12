@@ -73,8 +73,9 @@ class Login extends Component {
 
     render() {
         return (
-           <View>
-           
+          <View style={styles.background}>
+
+
       <TextInput
       placeholder="Please enter your email"
       onChangeText={(email) => this.setState ({email})}
@@ -96,13 +97,33 @@ class Login extends Component {
          title="Go back"
           onPress={() => this.props.navigation.navigate("Home")}
       />
-      </View>
+
+ </View>
         );
     }
 }
 
 // StyleSheet
-
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#92a8d1',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 18,
+    color: '#ffffff',
+    marginHorizontal: 30,
+  },
+  box: {
+    backgroundColor: '#fefbd8',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    width: 200,
+    height: 50,
+  },
+})
 
 
 export default Login;

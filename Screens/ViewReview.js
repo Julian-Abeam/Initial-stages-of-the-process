@@ -67,13 +67,19 @@ class ViewReview extends Component {
               //Items: overall_rating, price_rating, quality, clenliness, Likes
 
               <View style={{ padding: 20 }}>
+<TouchableOpacity
+
+  onPress ={() =>  {
+// Navigate to likeUnlike
+// add review id
+  }}>
                 <Text>{item.review_body}</Text>
                 <Text>Overall Rating:  {item.overall_rating}</Text>
                 <Text>Price Rating:  {item.price_rating}</Text>
                 <Text>Quality:  {item.quality_rating}</Text>
                 <Text>clenliness:  {item.clenliness_rating}</Text>
                 <Text>Likes:  {item.likes}</Text>
-
+</TouchableOpacity>
               </View>
 
 
